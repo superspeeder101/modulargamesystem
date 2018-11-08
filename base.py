@@ -21,8 +21,11 @@ class ModuleConnectionReference:
     self.pendingConnections_IN = []
     self.pendingConnections_OUT = []
     
-  registerModuleConnectedToSelf
-  registerSelfConnectedToModule
+  def registerModuleConnectedToSelf(self, module):
+    self.pendingConnections_IN.append(module.getConnectionReference())
+    
+  def registerSelfConnectedToModule(self, module):
+    self.pendingConnections_OUT.append(module.getConnectionReference())
 
 class Module:
   def __init__(self, inboundConnections):
